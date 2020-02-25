@@ -1,0 +1,5 @@
+Bienvenue chez Barette!
+Facture:
+Roger 10.5
+Céline 5.0
+Céline 15.75

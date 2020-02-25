@@ -1,6 +1,10 @@
 package tp1;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -11,7 +15,7 @@ public class tpPartie2 {
 	
 	 
 	
-	    public static void main(String[] args) 
+	    public static void main(String[] args) throws FileNotFoundException 
 	    {
 	    	
 	        String filePath = "../format.txt";
@@ -73,11 +77,7 @@ public class tpPartie2 {
 	            	 }
 					
 				}
-	             
-	             
-//	             listClient.forEach((n) -> System.out.println(n.getNomClient()));
-//	             listPlat.forEach((n) -> System.out.println( n.getNomPlats() + " " + n.getCoutPlats()));
-//	             listCommande.forEach((n) -> System.out.println(n.getNomClient() + " " + n.getNomPlats() + " " + n.getNbreCommande()));
+	           
 	             
 	             for( Commande commande : listCommande ) {
 	            	 
@@ -97,14 +97,25 @@ public class tpPartie2 {
 	            	 Facture facture = new Facture(nomClient, prix, nbreCommande);
 	            	 listFacture.add(facture);
 	            	 
-	             }
-	             System.out.println("Bienvenue chez Barette!\nFacture:");
+	             }	             
+	            
+	             String premierLigne = "Bienvenue chez Barette!\nFacture:";
+	             
+	             System.out.println(premierLigne);
+	             
+	             try (
+	            		 PrintStream writer = new PrintStream(new FileOutputStream("tp1Partie2.txt"))) {
+	            	   
+	            	 writer.println(premierLigne);
+	            	    
+	            	
 	             for(Facture facture : listFacture) {
 	            	 
-	            	 System.out.println(facture.getNomClient() + " " + facture.getCoutTotal());
-	            	 
+	            	 String chaqueLingne = facture.getNomClient() + " " + facture.getCoutTotal();
+	            	 System.out.println(chaqueLingne);
+	            	 writer.println(chaqueLingne);
 	             }
-					
+	             }
 				}
 	        
 	        
