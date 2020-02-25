@@ -75,18 +75,42 @@ public class tpPartie2 {
 				}
 	             
 	             
-	             listClient.forEach((n) -> System.out.println(n.getNomClient()));
-	             listPlat.forEach((n) -> System.out.println( n.getNomPlats() + " " + n.getCoutPlats()));
-	             listCommande.forEach((n) -> System.out.println(n.getNomClient() + " " + n.getNomPlats() + " " + n.getNbreCommande()));
-	             Facture facture = new Facture(listClient,listCommande,listPlat);
-	             facture.afficherFacture();
+//	             listClient.forEach((n) -> System.out.println(n.getNomClient()));
+//	             listPlat.forEach((n) -> System.out.println( n.getNomPlats() + " " + n.getCoutPlats()));
+//	             listCommande.forEach((n) -> System.out.println(n.getNomClient() + " " + n.getNomPlats() + " " + n.getNbreCommande()));
+	             
+	             for( Commande commande : listCommande ) {
+	            	 
+	            	 String nomClient = commande.getNomClient();
+	            	 float prix = 0;
+	            	 for ( Plat plat : listPlat ) {
+	            		 
+	            		 if ( plat.getNomPlats().contentEquals(commande.getNomPlats()) ) {
+	            			 
+	            			 prix = plat.getCoutPlats();
+	            			 
+	            		 }
+	            		 
+	            	 }
+	            	 
+	            	 int nbreCommande = commande.getNbreCommande();
+	            	 Facture facture = new Facture(nomClient, prix, nbreCommande);
+	            	 listFacture.add(facture);
+	            	 
+	             }
+	             System.out.println("Bienvenue chez Barette!\nFacture:");
+	             for(Facture facture : listFacture) {
+	            	 
+	            	 System.out.println(facture.getNomClient() + " " + facture.getCoutTotal());
+	            	 
+	             }
 					
 				}
 	        
 	        
 	    
 	 
-	    private static String fichierAuComplet(String filePath) {
+	    public static String fichierAuComplet(String filePath) {
 	    	
 	        String content = "";
 	 
