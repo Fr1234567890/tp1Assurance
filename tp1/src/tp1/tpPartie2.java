@@ -75,18 +75,39 @@ public class tpPartie2 {
 				}
 	             
 	             
-	             System.out.println("Bienvenue");
+	             System.out.println("Bienvenue chez Barette!");
 //	             listClient.forEach((n) -> System.out.println(n.getNomClient()));
 //	             listPlat.forEach((n) -> System.out.println(n.getNomPlats()));
-//	             listCommande.forEach((n) -> System.out.println(n.getNomPlats()));
+//	             listCommande.forEach((n) -> System.out.println(n.getNbreCommande()));
 	             
-	             for( Commande commande : listCommande ) {
+//	             for( Commande commande : listCommande ) {
+//	            	 
+//	            	 String nomClient = commande.getNomClient();
+//	            	 float prix = 5;
+//	            	 int nbreCommande = commande.getNbreCommande();
+//	            	 Facture facture = new Facture(nomClient, prix, nbreCommande);
+//	            	 facture.calculeCoutTotal();
+//	            	 listFacture.add(facture);
+//	            	 
+//	             }
+	             
+	             for( int x = 0; x < listClient.size(); x++) {
 	            	 
-	            	 String nomClient = commande.getNomClient();
-	            	 float prix = 5;
-	            	 int nbreCommande = commande.getNbreCommande();
-	            	 Facture facture = new Facture(nomClient, prix, nbreCommande);
-	            	 facture.calculeCoutTotal();
+	            	 String nomClient = listCommande.get(x).getNomClient();
+	            	 float prix = 0;
+	            	 
+	            	 for (int y = 0; y < listPlat.size(); y++) {
+	            		 
+	            		 if ( listPlat.get(y).getNomPlats() == listCommande.get(x).getNomPlats() ) {
+	            			 
+	            			 prix = listPlat.get(y).getCoutPlats();
+	            			 
+	            		 }
+	            		 
+	            	 }
+	            	 
+	            	 int nbre = 0;
+	            	 Facture facture = new Facture(nomClient, prix, nbre);
 	            	 listFacture.add(facture);
 	            	 
 	             }
