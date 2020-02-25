@@ -80,30 +80,21 @@ public class tpPartie2 {
 //	             listPlat.forEach((n) -> System.out.println(n.getNomPlats()));
 //	             listCommande.forEach((n) -> System.out.println(n.getNomPlats()));
 	             
-	             for(Commande commande: listCommande) {
-	            	
-	            	String nom = commande.getNomClient();
-	            	String nomPlat = commande.getNomPlats();
-	            	int nbrePlat = commande.getNbreCommande();
-	            	float coutInit = 0;
-	            	for (Plat plat:listPlat) {
-	            		
-	            		if ( nomPlat == plat.getNomPlats() ) {
-	            			
-	            			coutInit = plat.getCoutPlats();
-	            			
-	            		}
-	            		
-	            	}
-	            	Facture facture = new Facture(nom,coutInit,nbrePlat);
-	            	listFacture.add(facture);
+	             for( Commande commande : listCommande ) {
+	            	 
+	            	 String nomClient = commande.getNomClient();
+	            	 float prix = 5;
+	            	 int nbreCommande = commande.getNbreCommande();
+	            	 Facture facture = new Facture(nomClient, prix, nbreCommande);
+	            	 facture.calculeCoutTotal();
+	            	 listFacture.add(facture);
 	            	 
 	             }
 	             
 	             System.out.println("Factures:");
 	             for(Facture facture:listFacture) {
 	            	 
-	            	 System.out.println(facture.getNomClient() + " " + facture.getCoutTotal() + "$");
+	            	 System.out.println(facture.getNomClient() + " " + facture.getPrix() + "$");
 	            	 
 	             }
 					

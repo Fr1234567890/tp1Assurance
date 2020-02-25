@@ -3,16 +3,15 @@ package tp1;
 public class Facture {
 	
 	private String nomClient;
-	private float coutInit;
+	private float prix;
 	private int nbrePlat;
-	private double coutTotal = 0;
+	private double coutTotal;
 	
-	public Facture(String nom, float coutIn, int nbre){
+	public Facture(String nom, float prix, int nbre){
 		
 		nomClient = nom;
-		coutInit = coutIn;
+		this.prix = prix;
 		nbrePlat = nbre;
-		coutTotal = coutInit * nbrePlat;
 		
 	}
 	
@@ -25,6 +24,18 @@ public class Facture {
 	public double getCoutTotal() {
 		
 		return coutTotal;
+		
+	}
+	
+	public void calculeCoutTotal() {
+		
+		coutTotal = nbrePlat * prix;
+		
+	}
+	
+	public float getPrix() {
+		
+		return prix;
 		
 	}
 	
